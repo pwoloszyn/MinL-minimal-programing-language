@@ -1,6 +1,5 @@
 // Made by: Piotr Woloszyn 2015
-// Build: 6
-// Documentation in separate file
+// Build: 8
 
 import java.awt.Color;
 import java.awt.Font;
@@ -23,11 +22,12 @@ import javax.swing.text.PlainDocument;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 
-
+// GUI class handling the code input window.
 public class MinLFile extends JPanel{
 	
-	public JTextPane textaA;
-	public JTextPane textaB;
+	
+	public JTextPane CodeArea;
+	public JTextPane LineNumbersArea;
 	
 	Document doc;
 	
@@ -36,6 +36,7 @@ public class MinLFile extends JPanel{
 	String filename;
 	
 	public JScrollPane scrollp;
+	// Code colors
 	Color background_color = new Color(90,56,37);
 	Color main_text_color = new Color(185,122,87);
 	Color line_number_color = new Color(255,201,14);
@@ -46,6 +47,7 @@ public class MinLFile extends JPanel{
 	
 	boolean filechanged = false;
 	
+	// Constructor for the coding window
 	public MinLFile(String filename) {
 
 		GridLayout experimentLayout = new GridLayout(1,1);
@@ -79,6 +81,8 @@ public class MinLFile extends JPanel{
 				int wordL = before;
                 int wordR = before;
 				
+                // This while loop handles the identification of key words and symbols and gives
+                // them the specified colors.
 				while (wordR <= after) {
                     if (wordR == after || String.valueOf(text.charAt(wordR)).matches("\\W")) {
                         if (text.substring(wordL, wordR).matches("(\\W)*(def|loop|output|inc|dec|cond|var|loadfile)"))
@@ -87,7 +91,7 @@ public class MinLFile extends JPanel{
                         	setCharacterAttributes(wordL, wordR - wordL, atrib_Func, false);
                         else if (text.substring(wordL, wordR).matches("(\\W)*(-?\\d+(\\.\\d+)?)"))
                         	setCharacterAttributes(wordL, wordR - wordL, atrib_Numbers, false);
-                        else if (text.substring(wordL, wordR).matches("(\\W)*(:|minl|\\(|\\))"))
+                        else if (text.substring(wordL, wordR).matches("(\\W)*(:|stop|minl|\\(|\\))"))
                         	setCharacterAttributes(wordL, wordR - wordL, atrib_Aux, false);
                         else
                             setCharacterAttributes(wordL, wordR - wordL, atrib_MainText, false);
@@ -96,6 +100,8 @@ public class MinLFile extends JPanel{
                     wordR++;
                 }	
 			}		
+			// Handles the deletion of characters in the window and adjusts the color coding
+			// locations accordingly
 			public void remove (int offs, int len) throws BadLocationException {
                 super.remove(offs, len);
 
@@ -110,47 +116,46 @@ public class MinLFile extends JPanel{
                 	setCharacterAttributes(before, after - before, atrib_Func, false);
                 else if (text.substring(before, after).matches("(\\W)*(-?\\d+(\\.\\d+)?)"))
                 	setCharacterAttributes(before, after - before, atrib_Numbers, false);
-                else if (text.substring(before, after).matches("(\\W)*(:|minl|\\(|\\))"))
+                else if (text.substring(before, after).matches("(\\W)*(:|minl)"))
                 	setCharacterAttributes(before, after - before, atrib_Aux, false);
                 else
                     setCharacterAttributes(before, after - before, atrib_MainText, false);
             }			
 		};
 		
-		textaA = new JTextPane(stldoc);
+		CodeArea = new JTextPane(stldoc);
 		
-		textaA.setFont(new Font("Consolas", Font.PLAIN, 16));
-		textaA.setMargin(new Insets(0,5,0,0));
-		textaA.setBackground(background_color);
-		textaA.setForeground(aux_color);
-		textaA.setCaretColor(main_text_color);	
-		doc = textaA.getDocument();
+		CodeArea.setFont(new Font("Consolas", Font.PLAIN, 16));
+		CodeArea.setMargin(new Insets(0,5,0,0));
+		CodeArea.setBackground(background_color);
+		CodeArea.setForeground(aux_color);
+		CodeArea.setCaretColor(main_text_color);	
+		doc = CodeArea.getDocument();
 		if(doc instanceof PlainDocument) {
 			doc.putProperty(PlainDocument.tabSizeAttribute, 2);
 		}
-		textaA.setEditable(true);
+		CodeArea.setEditable(true);
 		
-		textaB = new JTextPane();
-		//textaB.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-		textaB.setMargin(new Insets(0,3,0,1));
-		Document doc = textaB.getDocument();
+		LineNumbersArea = new JTextPane();
+		LineNumbersArea.setMargin(new Insets(0,3,0,1));
+		Document doc = LineNumbersArea.getDocument();
 		try {
 		doc.insertString(doc.getLength(), "1", null);
 		} catch (BadLocationException e) {
 			e.printStackTrace();
 		}
-		textaB.setFont(new Font("Consolas", Font.PLAIN, 16));
-		textaB.setBackground(background_color);
-		textaB.setForeground(line_number_color);
-		textaB.setCaretColor(line_number_color);
-		textaB.setEditable(false);
+		LineNumbersArea.setFont(new Font("Consolas", Font.PLAIN, 16));
+		LineNumbersArea.setBackground(background_color);
+		LineNumbersArea.setForeground(line_number_color);
+		LineNumbersArea.setCaretColor(line_number_color);
+		LineNumbersArea.setEditable(false);
 		
 		constr.fill = GridBagConstraints.BOTH;
 		constr.weightx = 40.0;
 		constr.weighty = 1.0;
 		constr.gridx = 1;
 		constr.gridy = 0;
-		temparea.add(textaA,constr);
+		temparea.add(CodeArea,constr);
 		
 		constr.fill = GridBagConstraints.BOTH;
 		constr.weightx = 0.3;
@@ -158,12 +163,13 @@ public class MinLFile extends JPanel{
 		constr.insets = new Insets(0,1,0,1);
 		constr.gridx = 0;
 		constr.gridy = 0;
-		temparea.add(textaB,constr);	
+		temparea.add(LineNumbersArea,constr);	
 	
-		textaA.getDocument().addDocumentListener(new DocumentListener() {
+		// This handles the counting of line numbers
+		CodeArea.getDocument().addDocumentListener(new DocumentListener() {
 			public String getText() {
-				int caretPosition = textaA.getDocument().getLength();
-				Element root = textaA.getDocument().getDefaultRootElement();
+				int caretPosition = CodeArea.getDocument().getLength();
+				Element root = CodeArea.getDocument().getDefaultRootElement();
 				String text = "1" + System.getProperty("line.separator");
 				for(int i=2; i<root.getElementIndex(caretPosition)+2; i++) {
 					text += i + System.getProperty("line.separator");
@@ -172,17 +178,17 @@ public class MinLFile extends JPanel{
 			}
 			@Override
 			public void insertUpdate(DocumentEvent e) {
-				textaB.setText(getText());
+				LineNumbersArea.setText(getText());
 				filechanged = true;
 			}
 			@Override
 			public void removeUpdate(DocumentEvent e) {
-				textaB.setText(getText());
+				LineNumbersArea.setText(getText());
 				filechanged = true;
 			}
 			@Override
 			public void changedUpdate(DocumentEvent e) {
-				textaB.setText(getText());
+				LineNumbersArea.setText(getText());
 				filechanged = true;
 			}
 		});
