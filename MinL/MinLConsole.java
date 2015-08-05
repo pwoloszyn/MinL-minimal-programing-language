@@ -1,6 +1,5 @@
 // Made by: Piotr Woloszyn 2015
-// Build: 6
-// Documentation in separate file
+// Build: 8
 
 import java.awt.Color;
 import java.awt.Font;
@@ -19,7 +18,8 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.Element;
 
-
+//The console object, this is where the output will be displayed. This is
+// a GUI class so there is not much to elaborate on
 public class MinLConsole extends JPanel{
 	
 	
@@ -77,6 +77,9 @@ public class MinLConsole extends JPanel{
 		constr.gridy = 0;
 		temparea.add(indicator,constr);	
 		
+		// This handles some minor input functionality in the console area,
+		// as in: the console will identify the commands 'run' which will run the code
+		// and 'exit' which will exit the program.
 		consolearea.addKeyListener(new KeyListener() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -108,6 +111,7 @@ public class MinLConsole extends JPanel{
 			}
 		});
 		
+		// This inserts the '>>' characters at the start of each line
 		consolearea.getDocument().addDocumentListener(new DocumentListener() {
 			public String getText() {
 				int caretPosition = consolearea.getDocument().getLength();
