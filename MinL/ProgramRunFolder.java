@@ -1,6 +1,5 @@
 // Made by: Piotr Woloszyn 2015
-// Build: 6
-// Documentation in separate file
+// Build: 8
 
 import java.awt.Color;
 import java.awt.Font;
@@ -12,7 +11,7 @@ import java.awt.Insets;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-
+// A GUI class, handles the small folder location window
 public class ProgramRunFolder extends JPanel {
 	
 	public JPanel temparea;
