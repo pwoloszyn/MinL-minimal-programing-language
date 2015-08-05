@@ -368,10 +368,35 @@ public class MinL extends JFrame implements ActionListener{
 									else
 										local_double_variables.put(var_name, 0.0 + Integer.parseInt(var_definition));
 								} else {
-									if(mode == 0)
-										string_variables.put(var_name, var_definition);
-									else
-										local_string_variables.put(var_name, var_definition);
+									if(var_definition.length() > 4) {
+										if(var_definition.substring(0, 4).equals("var.")) {
+											String key = var_definition.substring(4, var_definition.length());				
+											if(mode == 1) {
+												if(local_double_variables.containsKey(key))
+													local_double_variables.put(var_name, local_double_variables.get(key));
+												else if(local_string_variables.containsKey(key))
+													local_string_variables.put(var_name, local_string_variables.get(key));
+												else if(double_variables.containsKey(key))
+													local_double_variables.put(var_name, double_variables.get(key));
+												else if(string_variables.containsKey(key))
+													local_string_variables.put(var_name, string_variables.get(key));
+												else
+													minc.consolearea.append("Error: bad variable call in def. line "+line_count+"\n");
+											} else {
+												if(double_variables.containsKey(key))
+													double_variables.put(var_name,double_variables.get(key));
+												else if(string_variables.containsKey(key))
+													string_variables.put(var_name,string_variables.get(key));
+												else
+													minc.consolearea.append("Error: bad variable call in def. line "+line_count+"\n");
+											}
+										} else {
+											if(mode == 0)
+												string_variables.put(var_name, var_definition);
+											else
+												local_string_variables.put(var_name, var_definition);
+										}
+									}
 								}
 							} else {
 								minc.consolearea.append("Error: prohibited reserved word use. line "+line_count+"\n");
@@ -547,6 +572,7 @@ public class MinL extends JFrame implements ActionListener{
 							if(next_element.equals("eq")) {
 								lhs = line.substring(empty_space+6, nextWordEndIndex(line, empty_space+6));
 								rhs = line.substring(empty_space+6+lhs.length()+1, nextWordEndIndex(line, empty_space+6+lhs.length()+1));
+								
 								if(isNumber(lhs) && isNumber(rhs)) {
 									if(Integer.parseInt(lhs) != Integer.parseInt(rhs)) {
 										conditional_state = false;
@@ -598,19 +624,19 @@ public class MinL extends JFrame implements ActionListener{
 								} else {
 									if(mode == 1) {
 										if(local_double_variables.containsKey(rhs) && local_double_variables.containsKey(lhs)) {
-											if(local_double_variables.get(lhs) != local_double_variables.get(rhs)) {
+											if(local_double_variables.get(lhs)+1 != local_double_variables.get(rhs)+1) {
 												conditional_state = false;
 											}
 										} else if(local_double_variables.containsKey(rhs) && double_variables.containsKey(lhs)) {
-											if(local_double_variables.get(lhs) != double_variables.get(rhs)) {
+											if(local_double_variables.get(lhs)+1 != double_variables.get(rhs)+1) {
 												conditional_state = false;
 											}
 										} else if(double_variables.containsKey(rhs) && local_double_variables.containsKey(lhs)) {
-											if(double_variables.get(lhs) != local_double_variables.get(rhs)) {
+											if(double_variables.get(lhs)+1 != local_double_variables.get(rhs)+1) {
 												conditional_state = false;
 											}
 										} else if(double_variables.containsKey(rhs) && double_variables.containsKey(lhs)) {
-											if(double_variables.get(lhs) != double_variables.get(rhs)) {
+											if(double_variables.get(lhs)+1 != double_variables.get(rhs)+1) {
 												conditional_state = false;
 											}
 										} else if(local_string_variables.containsKey(rhs) && local_string_variables.containsKey(lhs)) {
@@ -634,7 +660,7 @@ public class MinL extends JFrame implements ActionListener{
 										}
 									} else {
 										if(double_variables.containsKey(rhs) && double_variables.containsKey(lhs)) {
-											if(double_variables.get(lhs) != double_variables.get(rhs)) {
+											if(double_variables.get(lhs)+1 != double_variables.get(rhs)+1) {
 												conditional_state = false;
 											}
 										} else if(string_variables.containsKey(rhs) && string_variables.containsKey(lhs)) {
@@ -705,19 +731,19 @@ public class MinL extends JFrame implements ActionListener{
 								} else {
 									if(mode == 1) {
 										if(local_double_variables.containsKey(rhs) && local_double_variables.containsKey(lhs)) {
-											if(local_double_variables.get(lhs) == local_double_variables.get(rhs)) {
+											if(local_double_variables.get(lhs)+1 == local_double_variables.get(rhs)+1) {
 												conditional_state = false;
 											}
 										} else if(local_double_variables.containsKey(rhs) && double_variables.containsKey(lhs)) {
-											if(local_double_variables.get(lhs) == double_variables.get(rhs)) {
+											if(local_double_variables.get(lhs)+1 == double_variables.get(rhs)+1) {
 												conditional_state = false;
 											}
 										} else if(double_variables.containsKey(rhs) && local_double_variables.containsKey(lhs)) {
-											if(double_variables.get(lhs) == local_double_variables.get(rhs)) {
+											if(double_variables.get(lhs)+1 == local_double_variables.get(rhs)+1) {
 												conditional_state = false;
 											}
 										} else if(double_variables.containsKey(rhs) && double_variables.containsKey(lhs)) {
-											if(double_variables.get(lhs) == double_variables.get(rhs)) {
+											if(double_variables.get(lhs)+1 == double_variables.get(rhs)+1) {
 												conditional_state = false;
 											}
 										} else if(local_string_variables.containsKey(rhs) && local_string_variables.containsKey(lhs)) {
@@ -741,7 +767,7 @@ public class MinL extends JFrame implements ActionListener{
 										}
 									} else {
 										if(double_variables.containsKey(rhs) && double_variables.containsKey(lhs)) {
-											if(double_variables.get(lhs) == double_variables.get(rhs)) {
+											if(double_variables.get(lhs)+1 == double_variables.get(rhs)+1) {
 												conditional_state = false;
 											}
 										} else if(string_variables.containsKey(rhs) && string_variables.containsKey(lhs)) {
@@ -810,7 +836,7 @@ public class MinL extends JFrame implements ActionListener{
 									}
 								} else {
 									if(double_variables.containsKey(rhs) && double_variables.containsKey(lhs)) {
-										if(double_variables.get(lhs) >= double_variables.get(rhs)) {
+										if(double_variables.get(lhs)+1 >= double_variables.get(rhs)+1) {
 											conditional_state = false;
 										}
 									} else {
@@ -875,7 +901,7 @@ public class MinL extends JFrame implements ActionListener{
 									}
 								} else {
 									if(double_variables.containsKey(rhs) && double_variables.containsKey(lhs)) {
-										if(double_variables.get(lhs) <= double_variables.get(rhs)) {
+										if(double_variables.get(lhs)+1 <= double_variables.get(rhs)+1) {
 											conditional_state = false;
 										}
 									} else {
