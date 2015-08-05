@@ -1006,7 +1006,7 @@ public class MinL extends JFrame implements ActionListener{
 	// variables are as mentioned above replaced with place-holders
 	// on mode : read
 	// the process is reversed where the place-holders are replaced with the input
-	// arguments provided on fucntion call
+	// arguments provided on function call
 	//--------------------------------------------------------------------------------------------
 	public String functionHandler(LinkedList<String> argumentList, String code, String mode) {
 		
