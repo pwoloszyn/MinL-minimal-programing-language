@@ -32,9 +32,9 @@ the program run folder, the button bar, the main editor window and the console a
 	user to access different programs in different folders.	It works like this: when the window is empty and we 
 	save a .minl file it will be saved in the same location as the .jar file was executed from, this also 
 	applies loading a file into the editor. So for instance if our .jar file is located in C:\folder and a 
-	file we are trying to load is located in 	C:\folder\somestuff then we can't load the file unless we write 
+	file we are trying to load is located in C:\folder\somestuff then we can't load the file unless we write 
 	“somestuff” in the program run 	folder window. In general you should have all the files from the same program 
-	in the same 	folder that is contained in the same place where the .jar file is located in.
+	in the same folder that is contained in the same place where the .jar file is located in.
 
 	2.2 The button bar:
 	Is a set of buttons which allow the user to: create a new .minl file, save a .minl file, load a .minl
@@ -57,7 +57,7 @@ the program run folder, the button bar, the main editor window and the console a
 
 
 
-3. Syntax
+3. Syntax.
 
 	3.1 Definitions and variable assignment
 	
