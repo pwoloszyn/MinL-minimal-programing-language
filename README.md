@@ -5,6 +5,7 @@ Piotr Woloszyn, 2015
 Current build: 8
 
 Build History:
+
 	1-4: MinL prototype (provided in the MinL-prototype folder).
 	
 	5: Complete rewrite of the interpreter; def, inc, dec, output added to syntax; new GUI created.
