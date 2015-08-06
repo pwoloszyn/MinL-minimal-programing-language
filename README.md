@@ -5,12 +5,12 @@ Piotr Woloszyn, 2015
 Current build: 8
 
 Build History:
-1-4: MinL prototype (provided in the MinL-prototype folder)
-5: Complete rewrite of the interpreter; def, inc, dec, output added to syntax; new GUI created;
-6: Interprter is optimized; 'loop' added to syntax; all numbers saved as doubles now instead of ints as before;
-7: GUI design finished, added syntax highlight; 'if' and 'loadfile' added to syntax; Interpreter is optimized;
-8: Some error handling added to the editor; functions added to syntax; Removed most of the debug code;
-9 (planned): finish error handling; finish testing the syntax; start working on MinL+ (with a OO paradigm)
+1-4): MinL prototype (provided in the MinL-prototype folder)
+5): Complete rewrite of the interpreter; def, inc, dec, output added to syntax; new GUI created;
+6): Interprter is optimized; 'loop' added to syntax; all numbers saved as doubles now instead of ints as before;
+7): GUI design finished, added syntax highlight; 'if' and 'loadfile' added to syntax; Interpreter is optimized;
+8): Some error handling added to the editor; functions added to syntax; Removed most of the debug code;
+9\(planned)): finish error handling; finish testing the syntax; start working on MinL+ (with a OO paradigm)
 
 
 
@@ -167,9 +167,7 @@ the program run folder, the button bar, the main editor window and the console a
 	now:
 
 	def x : 2
-	
 	def y : 5
-	
 	def ans : var.x
 
 	//Note: in the loop we don't have to type var.x because strings are prohibited as input
