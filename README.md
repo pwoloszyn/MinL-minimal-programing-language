@@ -57,7 +57,7 @@ the program run folder, the button bar, the main editor window and the console a
 
 
 
-3. Syntax.
+3. Syntax
 
 	3.1 Definitions and variable assignment
 	
