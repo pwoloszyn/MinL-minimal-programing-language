@@ -60,6 +60,7 @@ the program run folder, the button bar, the main editor window and the console a
 3. Syntax
 
 	3.1 Definitions and variable assignment
+	
 	Variable assignment and definitions are handled by the key word “def”. The syntax is rather
 	simile and does not require the data type to be specified for the variable to be defined, the
 	syntax is as follows:
@@ -95,6 +96,7 @@ the program run folder, the button bar, the main editor window and the console a
 
 
 	3.2 Incrementation and Decrementation
+	
 	Incrementation and decrementation are handled by the keywords: “inc” and “dec” respectively.
 	The syntax is elementary and consists of the key word followed by the variable name, the
 	variable name has to be a number otherwise the editor will return an error. Code example:
@@ -112,6 +114,7 @@ the program run folder, the button bar, the main editor window and the console a
 
 	
 	3.3 Output
+	
 	Output is handled by the keyword “output”. The syntax here is a bit less simple than in the cases
 	above. The syntax looks like this:
 
@@ -144,6 +147,7 @@ the program run folder, the button bar, the main editor window and the console a
 
 	
 	3.4 Loop
+	
 	The loop syntax is handled by the keyword “loop”.  The syntax is as follows:
 
 	loop x
@@ -199,6 +203,7 @@ the program run folder, the button bar, the main editor window and the console a
 
 
 	3.5 If statements
+	
 	If conditional statements are handled by the keyword “if” and the secondary keywords: “eq”,
 	“neq”, “lt” and “gt”. The syntax is as follows:
 
@@ -270,6 +275,7 @@ the program run folder, the button bar, the main editor window and the console a
 
 	
 	3.6 Loadfile
+	
 	This command will run the code from a different file, the syntax is as follows:
 
 	loadfile somefile.minl
@@ -299,6 +305,7 @@ the program run folder, the button bar, the main editor window and the console a
 
 
 	3.7 FUNctions
+	
 	Functions are handled by the keyword “f.”. The syntax is as follows:
 
 	// For definitions:
@@ -357,6 +364,7 @@ the program run folder, the button bar, the main editor window and the console a
 
 
 	3.8 Stop keyword
+	
 	The stop keyword acts a means of handling a design flaw in the interpreter which otherwise
 	would require rewriting the whole thing from scratch. There are only two things to remember
 	about it: First it's always has to be used when brackets are used, specifically right after every
