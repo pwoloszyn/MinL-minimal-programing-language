@@ -10,9 +10,9 @@ Build History:
 	
 	5: Complete rewrite of the interpreter; def, inc, dec, output added to syntax; new GUI created.
 	
-	6: Interprter is optimized; 'loop' added to syntax; all numbers saved as doubles now instead of ints as 		before.
+	6: Interprter is optimized; 'loop' added to syntax; all numbers saved as doubles now instead of ints as		before.
 	
-	7: GUI design finished, added syntax highlight; 'if' and 'loadfile' added to syntax; Interpreter is 			optimized.
+	7: GUI design finished, added syntax highlight; 'if' and 'loadfile' added to syntax; Interpreter is 		optimized.
 	
 	8: Some error handling added to the editor; functions added to syntax; Removed most of the debug code.
 	
