@@ -14,7 +14,7 @@ Build History:
 
 
 
-1. Goals
+1) Goals
 
 The purpose of this endeavor first and foremost is to develop a better understanding of the workings of 
 programing languages and secondly to acquire programing experience by designing and developing them. In 
@@ -22,7 +22,7 @@ the case of MinL the focus is on a interpreted programing language that is funct
 
 
 
-2. The Editor
+2) The Editor
 
 In order to explain how to use the editor we have to take a look at the individual elements of it, which are: 
 the program run folder, the button bar, the main editor window and the console area.
@@ -57,7 +57,7 @@ the program run folder, the button bar, the main editor window and the console a
 
 
 
-3. Syntax
+3) Syntax
 
 	3.1 Definitions and variable assignment
 	
@@ -376,7 +376,7 @@ the program run folder, the button bar, the main editor window and the console a
 
 
 
-4. Interpreter Design
+4) Interpreter Design
 
 The MinL interpreter follows a simple design philosophy, where the data is stored in 5 different Maps:
 a numbers map, a strings map, a functions map for global variables and a numbers map and s strings map
@@ -386,7 +386,7 @@ evaluated. Unfortunately since this project is still mostly for self-learning th
 in the design than consistency, this is most apparent when comparing the pre-build 7 pieces of code with the
 newer ones.
 
-5. What Comes Next
+5) What Comes Next
 
 Taking the lessons from this project to heart my hope is to create a true Object Oriented interpreted
 programing language, but for now MinL needs to be finished, it is still a incomplete project and I have
