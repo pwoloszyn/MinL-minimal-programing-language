@@ -89,6 +89,7 @@ the program run folder, the button bar, the main editor window and the console a
 	You can also overwrite variables:
 
 	def x : 56
+	
 	def x : hello!
 
 	Now if were run these two lines the value assigned to the x variable will be the string “hello!”, 
@@ -102,12 +103,14 @@ the program run folder, the button bar, the main editor window and the console a
 	variable name has to be a number otherwise the editor will return an error. Code example:
 
 	def x : 2
+	
 	inc x
 
 	This will increment the value of the variable x by 1, so at the end of the code it will be 3.
 	The very same syntax applies to decrementation:
 
 	def y : 45
+	
 	dec y
 
 	Now the value of y will be 44.
@@ -131,6 +134,7 @@ the program run folder, the button bar, the main editor window and the console a
 	variable, here is an example:
 
 	def x : 6
+	
 	output : var.x
 
 	And it will output “12”. You can intermix variables and text in your output, just as long as you
@@ -138,7 +142,9 @@ the program run folder, the button bar, the main editor window and the console a
 	example:
 
 	def x : 2
+	
 	def y : 5
+	
 	def z : 7
 
 	output : var.x plus var.y equals var.z
@@ -167,6 +173,7 @@ the program run folder, the button bar, the main editor window and the console a
 	now:
 
 	def x : 2
+	
 	def y : 5
 	
 	def ans : var.x
