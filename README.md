@@ -16,7 +16,7 @@ Build History:
 	
 	8: Some error handling added to the editor; functions added to syntax; Removed most of the debug code.
 	
-	9(planned)): finish error handling; finish testing the syntax; start working on MinL+ (with a OO paradigm).
+	9 (planned): finish error handling; finish testing the syntax; start working on MinL+ (with a OO paradigm).
 
 
 
